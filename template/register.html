@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex items-center justify-center bg-gray-200 pt-24">
+    <main class="w-full max-w-md bg-white p-8 rounded-md shadow-lg">
+      <h2 class="text-gray-800 text-3xl text-center font-semibold">Register</h2>
+      <br />
+      {% if messages %} {% for message in messages %}
+      <h2 class="text-red-500 mb-4">{{message}}</h2>
+      {% endfor %} {% endif %}
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="w-5/5 h-8 border mb-4 border-gray-200">
+          <input
+            class="w-full h-full p-2 bg-transparent"
+            type="text"
+            placeholder="Create a username"
+            required
+            name="username"
+          />
+        </div>
+        <div class="w-5/5 h-8 border mb-4 border-gray-200">
+          <input
+            class="w-full h-full p-2 bg-transparent"
+            type="email"
+            placeholder="Enter your email"
+            required
+            name="email"
+          />
+        </div>
+        <div class="w-5/5 h-8 border mb-4 border-gray-200">
+          <input
+            class="w-full h-full p-2 bg-transparent"
+            type="password"
+            placeholder="Enter your password"
+            required
+            name="password"
+          />
+        </div>
+        <div class="policy"></div>
+        <div class="text-center mt-4 w-5/5">
+          <input
+            class="bg-blue-500 w-full text-white px-4 py-2 rounded-md text-lg cursor-pointer"
+            type="submit"
+            value="Register"
+          />
+        </div>
+        <div class="text-center mt-4">
+          <h3>
+            Already have an account?
+            <a href="{% url 'login' %}" class="text-blue-500 underline hover:text-blue-700"
+              >Login</a
+            >
+          </h3>
+        </div>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex items-center justify-center bg-gray-200 pt-24">
+    <div class="max-w-md w-full bg-white p-8 rounded-md shadow-lg">
+      <h2 class="text-gray-800 text-3xl text-center font-semibold">Login</h2>
+      <br />
+
+      {% if messages %} {% for message in messages %}
+      <h2 class="text-red-500 mb-4">{{message}}</h2>
+      {% endfor %} {% endif %}
+      <form method="POST" action="">
+        {% csrf_token %}
+        <table class="w-5/5 h-8 mb-4">
+          <tr class="w-5/5 h-8 mb-8">
+            <td>{{ form.username.label_tag }}</td>
+            <td class="w-full h-full p-4 pl-4 bg-transparent">
+              {{ form.username }}
+            </td>
+          </tr>
+          <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td class="w-full h-full p-4 bg-transparent">
+              {{ form.password }}
+            </td>
+          </tr>
+        </table>
+        <input
+          class="bg-blue-500 w-full text-white px-4 py-2 rounded-md text-lg cursor-pointer"
+          type="submit"
+          value="login"
+        />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+      <!-- <form action="" method="POST">
+        {% csrf_token %}
+        <div class="w-5/5 h-8 border mb-4 border-gray-200">
+          <input
+            class="w-full h-full p-2 bg-transparent"
+            type="text"
+            placeholder="Enter your username"
+            required
+            name="uname"
+          />
+        </div>
+        <div class="w-5/5 h-8 border mb-4 border-gray-200">
+          <input
+            class="w-full h-full p-2 bg-transparent"
+            type="password"
+            placeholder="Enter your password"
+            required
+            name="pass"
+          />
+        </div>
+        <div class="policy"></div>
+        <div class="text-center mt-4 w-5/5">
+          <input
+            class="bg-blue-500 w-full text-white px-4 py-2 rounded-md text-lg cursor-pointer"
+            type="submit"
+            value="Login"
+          />
+        </div>
+        <div class="text-center mt-4">
+          <input
+            class="bg-transparent text-lg cursor-pointer text-red-500"
+            type="submit"
+            value="Forgot Password?"
+          />
+        </div>
+        <div class="text-center mt-4">
+          <h3>
+            Don't have an account?
+            <a
+              class="text-blue-500 underline hover:text-blue-700"
+              href="{% url 'register' %}"
+              >Register now</a
+            >
+          </h3>
+        </div>
+      </form> -->
+    </div>
+  </body>
+</html>
